@@ -1,0 +1,47 @@
+[System]
+Name='ZIloop5'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Ie'
+Range=[-100 100]
+NumMFs=3
+MF1='ZE':'trimf',[-20 0 20]
+MF2='NS':'trapmf',[-100 -100 -30 -10]
+MF3='PS':'trapmf',[10 30 100 100]
+
+[Input2]
+Name='cIe'
+Range=[-10 10]
+NumMFs=3
+MF1='ZE':'trimf',[-2 0 2]
+MF2='NS':'trapmf',[-10 -10 -3 -1]
+MF3='PS':'trapmf',[1 3 10 10]
+
+[Output1]
+Name='Duty_Cycle'
+Range=[-1 1]
+NumMFs=3
+MF1='ZE':'trimf',[-0.2 0 0.2]
+MF2='NS':'trapmf',[-1 -1 -0.6 -0.2]
+MF3='PS':'trapmf',[0.2 0.6 1 1]
+
+[Rules]
+2 1, 2 (1) : 1
+2 3, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 3 (1) : 1
+3 2, 1 (1) : 1
+3 1, 3 (1) : 1
+2 2, 2 (1) : 1
+1 1, 1 (1) : 1
+3 3, 3 (1) : 1
